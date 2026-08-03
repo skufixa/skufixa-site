@@ -100,13 +100,12 @@ export default function FMPage() {
     }
 
     const distance = touchStartX.current - touchEndX.current;
-    const minimumSwipeDistance = 50;
 
-    if (distance > minimumSwipeDistance) {
+    if (distance > 50) {
       showNext();
     }
 
-    if (distance < -minimumSwipeDistance) {
+    if (distance < -50) {
       showPrevious();
     }
 
@@ -119,11 +118,11 @@ export default function FMPage() {
 
   return (
     <main className="relative min-h-screen px-4 py-10">
-      <div className="relative z-10 mx-auto w-full max-w-6xl">
+      <div className="relative z-10 mx-auto w-full max-w-5xl">
         <div className="text-center">
           <Link
             href="/"
-            className="mb-6 inline-block text-sm text-pink-400 transition hover:scale-105"
+            className="mb-5 inline-block text-sm text-pink-400 transition hover:scale-105"
           >
             ← На главную
           </Link>
@@ -131,10 +130,6 @@ export default function FMPage() {
           <h1 className="text-5xl font-black">
             FM <span className="text-pink-400">📸</span>
           </h1>
-
-          <p className="mt-2 text-zinc-500">
-            Забавные первые сообщения
-          </p>
         </div>
 
         {loading && (
@@ -155,7 +150,7 @@ export default function FMPage() {
           </p>
         )}
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
           {items.map((item, index) => (
             <button
               key={item.id}
@@ -163,34 +158,37 @@ export default function FMPage() {
               onClick={() => setSelectedIndex(index)}
               className="
                 group
+                w-full
                 overflow-hidden
-                rounded-[28px]
+                rounded-[24px]
                 border
                 border-pink-200
                 bg-white/90
                 p-3
                 shadow-lg
-                shadow-pink-100/70
+                shadow-pink-100/60
                 backdrop-blur-sm
                 transition
                 duration-300
-                hover:-translate-y-2
-                hover:scale-[1.02]
+                hover:-translate-y-1
+                hover:border-pink-300
                 hover:shadow-xl
               "
-              style={{
-                animation: "reveal-up 0.65s ease-out forwards",
-                animationDelay: `${index * 0.1}s`,
-                opacity: 0,
-              }}
             >
-              <div className="flex min-h-52 items-center justify-center overflow-hidden rounded-[22px] bg-pink-50">
-                <img
-                  src={item.image_url}
-                  alt={`FM скрин ${index + 1}`}
-                  className="max-h-72 w-full rounded-[22px] object-contain transition duration-300 group-hover:scale-[1.02]"
-                />
-              </div>
+              <img
+                src={item.image_url}
+                alt={`FM скрин ${index + 1}`}
+                className="
+                  block
+                  h-auto
+                  w-full
+                  rounded-[16px]
+                  object-contain
+                  transition
+                  duration-300
+                  group-hover:scale-[1.01]
+                "
+              />
             </button>
           ))}
         </div>
@@ -198,13 +196,13 @@ export default function FMPage() {
 
       {selectedItem && selectedIndex !== null && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-3 sm:p-6"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-3 sm:p-6"
           onClick={closeGallery}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-sm font-bold text-white sm:text-base">
+          <div className="absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-sm font-bold text-white">
             {selectedIndex + 1} / {items.length}
           </div>
 
@@ -212,7 +210,7 @@ export default function FMPage() {
             type="button"
             onClick={closeGallery}
             aria-label="Закрыть"
-            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-pink-400 text-xl font-black text-white shadow-lg transition hover:scale-105 hover:bg-pink-500 sm:h-12 sm:w-12 sm:text-2xl"
+            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-pink-400 text-xl font-black text-white shadow-lg transition hover:scale-105 hover:bg-pink-500"
           >
             ✕
           </button>
@@ -225,7 +223,7 @@ export default function FMPage() {
                 showPrevious();
               }}
               aria-label="Предыдущий скрин"
-              className="absolute left-3 top-1/2 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border-4 border-pink-200 bg-pink-100 text-4xl font-black text-pink-500 shadow-lg transition hover:scale-105 hover:bg-pink-200 sm:flex sm:left-6 sm:h-16 sm:w-16"
+              className="absolute left-4 top-1/2 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-pink-100 text-3xl font-black text-pink-500 shadow-lg transition hover:scale-105 sm:flex"
             >
               ←
             </button>
@@ -234,7 +232,7 @@ export default function FMPage() {
           <img
             src={selectedItem.image_url}
             alt={`FM скрин ${selectedIndex + 1}`}
-            className="max-h-[88vh] max-w-[94vw] select-none rounded-3xl object-contain shadow-2xl sm:max-w-[78vw]"
+            className="max-h-[88vh] max-w-[96vw] select-none rounded-2xl object-contain shadow-2xl sm:max-w-[82vw]"
             draggable={false}
             onClick={(event) => event.stopPropagation()}
           />
@@ -247,7 +245,7 @@ export default function FMPage() {
                 showNext();
               }}
               aria-label="Следующий скрин"
-              className="absolute right-3 top-1/2 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border-4 border-pink-200 bg-pink-100 text-4xl font-black text-pink-500 shadow-lg transition hover:scale-105 hover:bg-pink-200 sm:flex sm:right-6 sm:h-16 sm:w-16"
+              className="absolute right-4 top-1/2 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-pink-100 text-3xl font-black text-pink-500 shadow-lg transition hover:scale-105 sm:flex"
             >
               →
             </button>
