@@ -40,8 +40,8 @@ export default function Navbar() {
           items-center
           rounded-full
           border
-          border-pink-200
-          bg-white/90
+          border-pink-200 dark:border-zinc-700
+          bg-white/90 dark:bg-zinc-900/90
           px-1
           shadow-lg
           backdrop-blur

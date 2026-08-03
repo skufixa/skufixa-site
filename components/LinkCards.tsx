@@ -62,8 +62,8 @@ export default function LinkCards() {
               justify-between
               rounded-[26px]
               border
-              border-pink-200
-              bg-white/95 dark:shadow-black/40
+              border-pink-200 dark:border-zinc-700
+              bg-white/95 dark:bg-zinc-800/90
               px-5
               shadow-md
               shadow-pink-100/50
@@ -85,7 +85,7 @@ export default function LinkCards() {
                   items-center
                   justify-center
                   rounded-full
-                  bg-pink-50
+                  bg-pink-50 dark:bg-pink-500/10
                   text-2xl
                   shadow-sm
                   transition
@@ -104,7 +104,7 @@ export default function LinkCards() {
                     text-xl
                     font-black
                     leading-none
-                    text-zinc-900
+                    text-zinc-900 dark:text-white
                   "
                 >
                   {card.title}
@@ -128,7 +128,7 @@ export default function LinkCards() {
             <span
               className="
                 text-2xl
-                text-zinc-300
+                text-zinc-300 dark:text-zinc-500
                 transition
                 duration-300
                 group-hover:translate-x-1
