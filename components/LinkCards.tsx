@@ -63,7 +63,7 @@ export default function LinkCards() {
               rounded-[26px]
               border
               border-pink-200
-              bg-white/95
+              bg-white/95 dark:shadow-black/40
               px-5
               shadow-md
               shadow-pink-100/50
