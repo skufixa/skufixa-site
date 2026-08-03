@@ -41,90 +41,206 @@ export default function LinksPage() {
 
   return (
     <main className="relative min-h-screen px-4 py-10">
-      <div className="relative z-10 mx-auto flex w-full max-w-2xl flex-col items-center">
+
+      <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center">
+
         <Link
           href="/"
-          className="mb-6 text-sm text-pink-400 transition hover:scale-105"
+          className="
+            mb-6
+            text-sm
+            text-pink-400
+            transition
+            hover:scale-105
+          "
         >
           ← На главную
         </Link>
 
-        <h1 className="text-center text-5xl font-black">
+
+        <h1
+          className="
+            text-center
+            text-5xl
+            font-black
+            tracking-tight
+          "
+        >
           Links <span className="text-pink-400">♡</span>
         </h1>
 
-        <p className="mb-8 mt-2 text-center text-zinc-500">
+
+        <p
+          className="
+            mb-10
+            mt-2
+            text-center
+            text-zinc-500
+          "
+        >
           все мои ссылки
         </p>
 
+
         {loading && (
-          <p className="mt-8 text-center text-zinc-500">
+          <p className="text-zinc-500">
             Загружаем ссылки...
           </p>
         )}
 
+
         {message && (
-          <p className="mt-8 text-center font-semibold text-pink-500">
+          <p className="font-semibold text-pink-500">
             {message}
           </p>
         )}
 
-        {!loading && !message && links.length === 0 && (
-          <p className="mt-8 text-center text-zinc-500">
-            Ссылки пока не добавлены
-          </p>
-        )}
 
         <div className="flex w-full flex-col gap-4">
+
           {links.map((item) => (
+
             <a
               key={item.id}
               href={item.url}
               target="_blank"
               rel="noreferrer"
+
               className="
                 group
+
                 flex
+                min-h-[96px]
+
+                w-full
+
                 items-center
                 justify-between
-                rounded-[26px]
+
+                rounded-[28px]
+
                 border
                 border-pink-200
-                bg-white/90
-                px-5
-                py-3.5
-                shadow-lg
-                shadow-pink-100/70
-                backdrop-blur-sm
-                transition
+
+                bg-white
+
+                px-6
+
+                shadow-md
+                shadow-pink-100/60
+
+                transition-all
                 duration-300
+
                 hover:-translate-y-1
                 hover:scale-[1.02]
+
+                hover:border-pink-300
+                hover:shadow-xl
               "
             >
-              <div className="flex min-w-0 items-center gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-pink-50 text-2xl shadow-md">
+
+
+              <div className="flex items-center gap-5">
+
+
+                <div
+                  className="
+                    flex
+
+                    h-14
+                    w-14
+
+                    shrink-0
+
+                    items-center
+                    justify-center
+
+                    rounded-full
+
+                    bg-pink-50
+
+                    text-2xl
+
+                    shadow-sm
+
+                    transition
+
+                    duration-300
+
+                    group-hover:scale-110
+                    group-hover:bg-pink-100
+                  "
+                >
                   {item.icon}
                 </div>
 
-                <div className="min-w-0">
-                  <h2 className="truncate text-xl font-black sm:text-2xl">
+
+
+                <div>
+
+                  <h2
+                    className="
+                      text-xl
+                      font-black
+
+                      text-zinc-900
+                    "
+                  >
                     {item.title}
                   </h2>
 
-                  <p className="mt-1 truncate text-sm text-zinc-500">
+
+
+                  <p
+                    className="
+                      mt-1
+
+                      text-sm
+
+                      text-zinc-400
+                    "
+                  >
                     {item.subtitle}
                   </p>
+
+
                 </div>
+
+
               </div>
 
-              <span className="ml-3 shrink-0 text-3xl text-zinc-400 transition duration-300 group-hover:translate-x-2 group-hover:text-pink-400">
+
+
+              <span
+                className="
+                  text-3xl
+
+                  text-zinc-300
+
+                  transition
+
+                  duration-300
+
+                  group-hover:translate-x-1
+                  group-hover:text-pink-400
+                "
+              >
                 ›
               </span>
+
+
             </a>
+
           ))}
+
+
         </div>
+
+
       </div>
+
+
     </main>
   );
 }

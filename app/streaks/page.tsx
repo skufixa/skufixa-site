@@ -37,12 +37,60 @@ export default function StreaksPage() {
     loadStreaks();
   }, []);
 
-  const medals = ["🥇", "🥈", "🥉"];
+
+  function getPlaceStyle(index: number) {
+    if (index === 0) {
+      return `
+        bg-gradient-to-r
+        from-[#fff1b8]
+        to-[#fff9e5]
+        border-[#ffd36b]
+        shadow-yellow-200
+      `;
+    }
+
+    if (index === 1) {
+      return `
+        bg-gradient-to-r
+        from-[#ffd8bd]
+        to-[#fff1e7]
+        border-[#efb184]
+        shadow-orange-200
+      `;
+    }
+
+    if (index === 2) {
+      return `
+        bg-gradient-to-r
+        from-[#ededed]
+        to-[#ffffff]
+        border-[#cccccc]
+        shadow-zinc-200
+      `;
+    }
+
+    return `
+      bg-white/90
+      border-pink-200
+      shadow-pink-100/70
+    `;
+  }
+
+
+  function medal(index: number) {
+    if (index === 0) return "🥇";
+    if (index === 1) return "🥈";
+    if (index === 2) return "🥉";
+
+    return `${index + 1}`;
+  }
+
 
   return (
-    <main className="min-h-screen px-4 py-10">
+    <main className="relative min-h-screen px-4 py-10">
 
-      <div className="mx-auto w-full max-w-2xl">
+      <div className="relative z-10 mx-auto w-full max-w-2xl">
+
 
         <div className="text-center">
 
@@ -61,12 +109,7 @@ export default function StreaksPage() {
           </Link>
 
 
-          <h1
-            className="
-              text-5xl
-              font-black
-            "
-          >
+          <h1 className="text-5xl font-black text-zinc-900">
             Streaks
             <span className="text-pink-400">
               {" "}🔥
@@ -74,13 +117,7 @@ export default function StreaksPage() {
           </h1>
 
 
-          <p
-            className="
-              mt-2
-              text-zinc-500
-              dark:text-zinc-400
-            "
-          >
+          <p className="mt-2 text-zinc-500">
             серии просмотров
           </p>
 
@@ -90,108 +127,148 @@ export default function StreaksPage() {
 
         {loading && (
           <p className="mt-10 text-center text-zinc-500">
-            Загружаем...
+            Загружаем стрики...
           </p>
         )}
 
 
+
         {message && (
-          <p className="mt-10 text-center text-pink-500">
+          <p className="mt-10 text-center font-semibold text-pink-500">
             {message}
           </p>
         )}
 
 
 
-        {!loading && !message && (
-          <div className="mt-8 flex flex-col gap-4">
+        <div className="mt-8 flex flex-col gap-4">
 
-            {streaks.map((user, index) => (
+          {streaks.map((user, index) => (
 
-              <div
-                key={user.id}
-                className={`
-                  flex
-                  items-center
-                  justify-between
-                  rounded-[28px]
-                  border
-                  px-5
-                  py-4
-                  shadow-md
-                  transition
-                  hover:-translate-y-1
+            <div
+              key={user.id}
+              className={`
+                group
+                relative
+                overflow-hidden
 
-                  ${
-                    index === 0
-                    ? `
-                      border-pink-300
-                      bg-pink-50
-                      shadow-pink-200/70
-                      dark:bg-pink-950/20
-                    `
-                    :
-                    `
-                      border-pink-200
-                      bg-white/90
-                      dark:border-zinc-700
-                      dark:bg-zinc-900/90
-                    `
-                  }
-                `}
-              >
+                flex
+                items-center
+                justify-between
+
+                rounded-[28px]
+                border
+
+                px-5
+                py-5
+
+                shadow-lg
+
+                transition-all
+                duration-300
+
+                hover:-translate-y-1
+                hover:scale-[1.02]
+
+                ${getPlaceStyle(index)}
+              `}
+            >
 
 
-                <div className="flex items-center gap-4">
-
-                  <div
+              {index < 3 && (
+                <>
+                  <span
                     className="
-                      flex
-                      h-12
-                      w-12
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-pink-100
+                      absolute
+                      right-16
+                      top-3
                       text-xl
-                      shadow-sm
-                      dark:bg-pink-900/30
+                      text-pink-400
+                      opacity-0
+                      transition
+                      duration-300
+                      group-hover:opacity-100
                     "
                   >
-                    {medals[index] ?? `#${index + 1}`}
-                  </div>
-
+                    ✦
+                  </span>
 
                   <span
                     className="
-                      text-lg
-                      font-black
-                      dark:text-white
+                      absolute
+                      right-8
+                      bottom-3
+                      text-sm
+                      text-pink-300
+                      opacity-0
+                      transition
+                      duration-300
+                      group-hover:opacity-100
                     "
                   >
-                    {user.username}
+                    ✧
                   </span>
+                </>
+              )}
 
+
+
+              <div className="flex items-center gap-5">
+
+
+                <div
+                  className="
+                    flex
+                    h-14
+                    w-14
+                    items-center
+                    justify-center
+
+                    rounded-full
+
+                    bg-white/80
+
+                    text-3xl
+
+                    shadow-md
+                  "
+                >
+                  {medal(index)}
                 </div>
 
 
 
                 <span
                   className="
+                    text-xl
                     font-black
-                    text-pink-400
+                    text-zinc-900
                   "
                 >
-                  {user.streak} дней
+                  {user.username}
                 </span>
 
 
               </div>
 
-            ))}
 
-          </div>
-        )}
+
+              <span
+                className="
+                  font-black
+                  text-pink-500
+                "
+              >
+                {user.streak} дней
+              </span>
+
+
+            </div>
+
+          ))}
+
+        </div>
+
 
       </div>
 

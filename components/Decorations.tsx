@@ -4,171 +4,208 @@ export default function Decorations() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
     >
-      {/* Обычный зайчик — слева сверху */}
+
+      {/* зайка сверху слева */}
       <img
         src="/decorations/зайка.png"
         alt=""
         className="
+          decor-float-a
           absolute
-          -left-2
-          top-20
-          w-24
+          left-[6%]
+          top-[12%]
+          w-44
           object-contain
-          opacity-75
-          sm:left-3
-          sm:top-24
-          sm:w-32
-          lg:left-[4%]
-          lg:top-[9%]
-          lg:w-40
-          lg:opacity-90
+          opacity-90
+          sm:w-52
         "
       />
 
-      {/* Пиксельный зай — слева около центра */}
+      {/* маленький зай */}
       <img
         src="/decorations/зай.png"
         alt=""
         className="
+          decor-float-b
           absolute
-          left-3
-          top-[31%]
-          w-24
+          left-[12%]
+          top-[38%]
+          w-40
           object-contain
           opacity-90
-          sm:left-6
-          sm:w-28
-          lg:left-[7%]
-          lg:top-[36%]
-          lg:w-36
         "
       />
 
-      {/* Большой кот — справа около профиля */}
+      {/* большой кот справа */}
       <img
         src="/decorations/кот.png"
         alt=""
         className="
+          decor-float-a
           absolute
-          -right-14
-          top-[25%]
-          w-40
+          right-[5%]
+          top-[18%]
+          w-72
           object-contain
-          opacity-75
-          sm:-right-10
-          sm:w-48
-          lg:-right-5
-          lg:top-[22%]
-          lg:w-64
-          lg:opacity-85
+          opacity-85
         "
       />
 
-      {/* Котик с текстом — слева снизу */}
+      {/* котик снизу слева */}
       <img
         src="/decorations/котик.png"
         alt=""
         className="
+          decor-float-b
           absolute
-          -left-6
-          bottom-28
-          w-32
-          object-contain
-          opacity-70
-          sm:-left-3
-          sm:w-40
-          lg:left-[1%]
-          lg:bottom-[7%]
-          lg:w-52
-          lg:opacity-85
-        "
-      />
-
-      {/* Наруто — снизу слева */}
-      <img
-        src="/decorations/наруто.png"
-        alt=""
-        className="
-          absolute
-          -bottom-2
-          left-2
-          w-24
+          left-[4%]
+          bottom-[12%]
+          w-56
           object-contain
           opacity-85
-          sm:left-8
-          sm:w-28
-          lg:left-[15%]
-          lg:bottom-0
-          lg:w-36
         "
       />
 
-      {/* Собака — снизу справа */}
+      {/* кот1 */}
+      <img
+        src="/decorations/кот1.jpg"
+        alt=""
+        className="
+          decor-float-c
+          absolute
+          right-[10%]
+          top-[48%]
+          w-48
+          object-contain
+          rounded-xl
+          opacity-85
+        "
+      />
+
+      {/* кот2 */}
+      <img
+        src="/decorations/кот2.jpg"
+        alt=""
+        className="
+          decor-float-a
+          absolute
+          left-[8%]
+          top-[60%]
+          w-44
+          object-contain
+          rounded-xl
+          opacity-85
+        "
+      />
+
+      {/* собака */}
       <img
         src="/decorations/собака.png"
         alt=""
         className="
+          decor-float-b
           absolute
-          -bottom-2
-          -right-8
-          w-28
+          right-[8%]
+          bottom-[10%]
+          w-52
           object-contain
-          opacity-75
-          sm:-right-3
-          sm:w-36
-          lg:right-[6%]
-          lg:bottom-0
-          lg:w-44
-          lg:opacity-90
+          opacity-90
         "
       />
 
-      {/* Декор сверху вокруг центрального блока */}
-      <span className="soft-glow absolute left-[25%] top-[12%] text-2xl text-pink-300 sm:text-3xl lg:left-[30%] lg:text-4xl">
-        ✦
-      </span>
+      {/* собака1 */}
+      <img
+        src="/decorations/собака1.jpg"
+        alt=""
+        className="
+          decor-float-c
+          absolute
+          right-[18%]
+          bottom-[35%]
+          w-40
+          object-contain
+          rounded-xl
+          opacity-80
+        "
+      />
 
-      <span className="float-heart-small absolute right-[22%] top-[14%] text-2xl text-pink-300 lg:right-[28%] lg:text-3xl">
+      {/* наруто */}
+      <img
+        src="/decorations/наруто.png"
+        alt=""
+        className="
+          decor-float-a
+          absolute
+          left-[18%]
+          bottom-[5%]
+          w-44
+          object-contain
+        "
+      />
+
+
+      {/* БАНТИКИ */}
+      <img
+        src="/decorations/бантик.png"
+        alt=""
+        className="
+          decor-bow
+          absolute
+          left-[25%]
+          top-[12%]
+          w-32
+          opacity-90
+        "
+      />
+
+      <img
+        src="/decorations/бантик.png"
+        alt=""
+        className="
+          decor-bow-reverse
+          absolute
+          right-[20%]
+          top-[35%]
+          w-40
+          opacity-90
+        "
+      />
+
+      <img
+        src="/decorations/бантик.png"
+        alt=""
+        className="
+          decor-bow
+          absolute
+          right-[28%]
+          bottom-[18%]
+          w-36
+          opacity-85
+        "
+      />
+
+
+      {/* сердечки и звездочки */}
+      <span className="decoration-heart absolute left-[22%] top-[20%] text-4xl text-pink-300">
         ♡
       </span>
 
-      <span className="soft-glow absolute right-[8%] top-[17%] text-2xl text-pink-300 sm:right-[12%] lg:right-[18%] lg:text-4xl">
+      <span className="decoration-heart absolute right-[18%] top-[12%] text-4xl text-pink-300">
+        ♡
+      </span>
+
+      <span className="decoration-star absolute left-[30%] top-[15%] text-4xl text-pink-300">
+        ✦
+      </span>
+
+      <span className="decoration-star absolute right-[10%] top-[45%] text-5xl text-pink-300">
         ✧
       </span>
 
-      {/* Декор по бокам центрального контента */}
-      <span className="float-heart-small absolute left-[4%] top-[47%] text-2xl text-pink-200 sm:left-[10%] lg:left-[20%] lg:text-3xl">
+      <span className="decoration-heart absolute left-[25%] bottom-[25%] text-4xl text-pink-300">
         ♡
       </span>
 
-      <span className="soft-glow absolute right-[5%] top-[48%] text-2xl text-pink-300 sm:right-[10%] lg:right-[20%] lg:text-4xl">
-        ✦
-      </span>
-
-      <span className="float-heart-small absolute left-[18%] top-[65%] hidden text-3xl text-pink-300 sm:block lg:left-[24%]">
-        ♡
-      </span>
-
-      <span className="soft-glow absolute right-[18%] top-[67%] hidden text-3xl text-pink-300 sm:block lg:right-[24%]">
-        ✧
-      </span>
-
-      {/* Небольшие элементы в свободных местах */}
-      <span className="soft-glow absolute left-[8%] top-[22%] text-xl text-pink-200 lg:text-2xl">
-        ✦
-      </span>
-
-      <span className="float-heart-small absolute right-[5%] top-[9%] text-xl text-pink-300 lg:right-[8%] lg:text-2xl">
-        ♡
-      </span>
-
-      <span className="float-heart-small absolute bottom-[18%] left-[5%] text-xl text-pink-300 lg:left-[12%] lg:text-3xl">
-        ♡
-      </span>
-
-      <span className="soft-glow absolute bottom-[14%] right-[17%] text-2xl text-pink-300 lg:text-3xl">
-        ✦
-      </span>
     </div>
   );
 }
