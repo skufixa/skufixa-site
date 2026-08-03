@@ -37,80 +37,164 @@ export default function StreaksPage() {
     loadStreaks();
   }, []);
 
+  const medals = ["🥇", "🥈", "🥉"];
+
   return (
-    <main className="relative min-h-screen px-4 py-10">
-      <div className="relative z-10 mx-auto w-full max-w-2xl">
+    <main className="min-h-screen px-4 py-10">
+
+      <div className="mx-auto w-full max-w-2xl">
+
         <div className="text-center">
+
           <Link
             href="/"
-            className="mb-6 inline-block text-sm text-pink-400 transition hover:scale-105"
+            className="
+              mb-6
+              inline-block
+              text-sm
+              text-pink-400
+              transition
+              hover:scale-105
+            "
           >
             ← На главную
           </Link>
 
-          <h1 className="text-5xl font-black">
-            Streaks <span className="text-pink-400">🔥</span>
+
+          <h1
+            className="
+              text-5xl
+              font-black
+            "
+          >
+            Streaks
+            <span className="text-pink-400">
+              {" "}🔥
+            </span>
           </h1>
 
-          <p className="mt-2 text-zinc-500">
-            Топ самых больших стриков
+
+          <p
+            className="
+              mt-2
+              text-zinc-500
+              dark:text-zinc-400
+            "
+          >
+            серии просмотров
           </p>
+
         </div>
+
+
 
         {loading && (
           <p className="mt-10 text-center text-zinc-500">
-            Загружаем стрики...
+            Загружаем...
           </p>
         )}
 
+
         {message && (
-          <p className="mt-10 text-center font-semibold text-pink-500">
+          <p className="mt-10 text-center text-pink-500">
             {message}
           </p>
         )}
 
-        {!loading && !message && streaks.length === 0 && (
-          <p className="mt-10 text-center text-zinc-500">
-            Стриков пока нет
-          </p>
-        )}
 
-        <div className="mt-8 flex flex-col gap-4">
-          {streaks.map((user, index) => (
-            <div
-              key={user.id}
-              className="
-                flex
-                items-center
-                justify-between
-                rounded-[26px]
-                border
-                border-pink-200
-                bg-white/90
-                px-5
-                py-4
-                shadow-lg
-                shadow-pink-100/70
-                backdrop-blur-sm
-              "
-            >
-              <div className="flex min-w-0 items-center gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-pink-50 text-lg font-black shadow-md">
-                  #{index + 1}
+
+        {!loading && !message && (
+          <div className="mt-8 flex flex-col gap-4">
+
+            {streaks.map((user, index) => (
+
+              <div
+                key={user.id}
+                className={`
+                  flex
+                  items-center
+                  justify-between
+                  rounded-[28px]
+                  border
+                  px-5
+                  py-4
+                  shadow-md
+                  transition
+                  hover:-translate-y-1
+
+                  ${
+                    index === 0
+                    ? `
+                      border-pink-300
+                      bg-pink-50
+                      shadow-pink-200/70
+                      dark:bg-pink-950/20
+                    `
+                    :
+                    `
+                      border-pink-200
+                      bg-white/90
+                      dark:border-zinc-700
+                      dark:bg-zinc-900/90
+                    `
+                  }
+                `}
+              >
+
+
+                <div className="flex items-center gap-4">
+
+                  <div
+                    className="
+                      flex
+                      h-12
+                      w-12
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-pink-100
+                      text-xl
+                      shadow-sm
+                      dark:bg-pink-900/30
+                    "
+                  >
+                    {medals[index] ?? `#${index + 1}`}
+                  </div>
+
+
+                  <span
+                    className="
+                      text-lg
+                      font-black
+                      dark:text-white
+                    "
+                  >
+                    {user.username}
+                  </span>
+
                 </div>
 
-                <span className="truncate text-lg font-black sm:text-xl">
-                  {user.username}
+
+
+                <span
+                  className="
+                    font-black
+                    text-pink-400
+                  "
+                >
+                  {user.streak} дней
                 </span>
+
+
               </div>
 
-              <span className="ml-4 shrink-0 font-black text-pink-400">
-                {user.streak} дней
-              </span>
-            </div>
-          ))}
-        </div>
+            ))}
+
+          </div>
+        )}
+
       </div>
+
     </main>
   );
 }
