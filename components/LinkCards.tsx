@@ -73,10 +73,6 @@ export default function LinkCards() {
               hover:border-pink-300
               hover:shadow-xl
               active:scale-[0.98]
-
-              dark:border-zinc-700
-              dark:bg-zinc-900
-              dark:shadow-black/30
             "
           >
             <div className="flex items-center gap-4">
@@ -86,6 +82,7 @@ export default function LinkCards() {
                   flex
                   h-14
                   w-14
+                  shrink-0
                   items-center
                   justify-center
                   rounded-full
@@ -96,8 +93,6 @@ export default function LinkCards() {
                   duration-300
                   group-hover:scale-110
                   group-hover:bg-pink-100
-
-                  dark:bg-pink-500/10
                 "
               >
                 {card.icon}
@@ -111,8 +106,6 @@ export default function LinkCards() {
                     font-black
                     leading-none
                     text-zinc-900
-
-                    dark:text-white
                   "
                 >
                   {card.title}
@@ -141,8 +134,6 @@ export default function LinkCards() {
                 duration-300
                 group-hover:translate-x-1
                 group-hover:text-pink-400
-
-                dark:text-zinc-500
               "
             >
               ›
