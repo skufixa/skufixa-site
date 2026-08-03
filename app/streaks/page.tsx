@@ -42,20 +42,22 @@ export default function StreaksPage() {
     if (index === 0) {
       return `
         bg-gradient-to-r
-        from-[#fff1b8]
-        to-[#fff9e5]
-        border-[#ffd36b]
-        shadow-yellow-200
+        from-[#fff0b5]
+        to-[#fff9df]
+        border-[#ffd45c]
+        shadow-[0_0_25px_rgba(255,215,100,0.45)]
+        hover:shadow-[0_0_40px_rgba(255,215,100,0.8)]
       `;
     }
 
     if (index === 1) {
       return `
         bg-gradient-to-r
-        from-[#ffd8bd]
-        to-[#fff1e7]
-        border-[#efb184]
-        shadow-orange-200
+        from-[#ffd9c2]
+        to-[#fff1e8]
+        border-[#f4b48b]
+        shadow-[0_0_25px_rgba(255,190,140,0.35)]
+        hover:shadow-[0_0_40px_rgba(255,190,140,0.7)]
       `;
     }
 
@@ -64,15 +66,19 @@ export default function StreaksPage() {
         bg-gradient-to-r
         from-[#ededed]
         to-[#ffffff]
-        border-[#cccccc]
-        shadow-zinc-200
+        border-[#d5d5d5]
+        shadow-[0_0_25px_rgba(220,220,220,0.5)]
+        hover:shadow-[0_0_40px_rgba(220,220,220,0.8)]
       `;
     }
 
     return `
-      bg-white/90
+      bg-gradient-to-r
+      from-[#fff5fb]
+      to-[#ffffff]
       border-pink-200
-      shadow-pink-100/70
+      shadow-pink-100
+      hover:shadow-pink-300/50
     `;
   }
 
@@ -82,7 +88,7 @@ export default function StreaksPage() {
     if (index === 1) return "🥈";
     if (index === 2) return "🥉";
 
-    return `${index + 1}`;
+    return index + 1;
   }
 
 
@@ -90,7 +96,6 @@ export default function StreaksPage() {
     <main className="relative min-h-screen px-4 py-10">
 
       <div className="relative z-10 mx-auto w-full max-w-2xl">
-
 
         <div className="text-center">
 
@@ -109,11 +114,9 @@ export default function StreaksPage() {
           </Link>
 
 
-          <h1 className="text-5xl font-black text-zinc-900">
+          <h1 className="text-5xl font-black">
             Streaks
-            <span className="text-pink-400">
-              {" "}🔥
-            </span>
+            <span className="text-pink-400"> 🔥</span>
           </h1>
 
 
@@ -134,14 +137,17 @@ export default function StreaksPage() {
 
 
         {message && (
-          <p className="mt-10 text-center font-semibold text-pink-500">
+          <p className="mt-10 text-center font-bold text-pink-500">
             {message}
           </p>
         )}
 
 
 
-        <div className="mt-8 flex flex-col gap-4">
+
+
+        <div className="mt-8 flex flex-col gap-5">
+
 
           {streaks.map((user, index) => (
 
@@ -156,60 +162,70 @@ export default function StreaksPage() {
                 items-center
                 justify-between
 
-                rounded-[28px]
+                rounded-[30px]
+
                 border
 
                 px-5
                 py-5
 
-                shadow-lg
-
                 transition-all
-                duration-300
+                duration-500
 
-                hover:-translate-y-1
-                hover:scale-[1.02]
+                hover:-translate-y-2
 
                 ${getPlaceStyle(index)}
               `}
             >
 
 
-              {index < 3 && (
-                <>
-                  <span
-                    className="
-                      absolute
-                      right-16
-                      top-3
-                      text-xl
-                      text-pink-400
-                      opacity-0
-                      transition
-                      duration-300
-                      group-hover:opacity-100
-                    "
-                  >
-                    ✦
-                  </span>
+              {/* маленький декор внутри карточки */}
 
-                  <span
-                    className="
-                      absolute
-                      right-8
-                      bottom-3
-                      text-sm
-                      text-pink-300
-                      opacity-0
-                      transition
-                      duration-300
-                      group-hover:opacity-100
-                    "
-                  >
-                    ✧
-                  </span>
-                </>
-              )}
+              <span
+                className="
+                  pointer-events-none
+                  absolute
+                  right-5
+                  top-3
+
+                  text-3xl
+                  text-pink-300
+
+                  opacity-60
+
+                  decoration-star
+
+                  transition
+
+                  group-hover:opacity-100
+                "
+              >
+                ✦
+              </span>
+
+
+              <span
+                className="
+                  pointer-events-none
+                  absolute
+                  right-12
+                  bottom-3
+
+                  text-2xl
+                  text-pink-200
+
+                  opacity-70
+
+                  float-heart-small
+
+                  transition
+
+                  group-hover:opacity-100
+                "
+              >
+                ♡
+              </span>
+
 
 
 
@@ -221,16 +237,27 @@ export default function StreaksPage() {
                     flex
                     h-14
                     w-14
+
                     items-center
                     justify-center
 
                     rounded-full
 
-                    bg-white/80
+                    !bg-white
 
-                    text-3xl
+                    border
+                    border-pink-200
+
+                    text-xl
+                    font-black
+
+                    !text-zinc-900
 
                     shadow-md
+
+                    transition
+
+                    group-hover:scale-110
                   "
                 >
                   {medal(index)}
@@ -242,7 +269,7 @@ export default function StreaksPage() {
                   className="
                     text-xl
                     font-black
-                    text-zinc-900
+                    !text-zinc-900
                   "
                 >
                   {user.username}
@@ -253,19 +280,23 @@ export default function StreaksPage() {
 
 
 
+
+
               <span
                 className="
                   font-black
-                  text-pink-500
+                  !text-zinc-900
                 "
               >
                 {user.streak} дней
               </span>
 
 
+
             </div>
 
           ))}
+
 
         </div>
 
