@@ -62,8 +62,8 @@ export default function LinkCards() {
               justify-between
               rounded-[26px]
               border
-              border-pink-200 dark:border-zinc-700
-              bg-white/95 dark:bg-zinc-800/90
+              border-pink-200
+              bg-white
               px-5
               shadow-md
               shadow-pink-100/50
@@ -73,6 +73,10 @@ export default function LinkCards() {
               hover:border-pink-300
               hover:shadow-xl
               active:scale-[0.98]
+
+              dark:border-zinc-700
+              dark:bg-zinc-900
+              dark:shadow-black/30
             "
           >
             <div className="flex items-center gap-4">
@@ -85,13 +89,15 @@ export default function LinkCards() {
                   items-center
                   justify-center
                   rounded-full
-                  bg-pink-50 dark:bg-pink-500/10
+                  bg-pink-50
                   text-2xl
                   shadow-sm
                   transition
                   duration-300
                   group-hover:scale-110
                   group-hover:bg-pink-100
+
+                  dark:bg-pink-500/10
                 "
               >
                 {card.icon}
@@ -104,7 +110,9 @@ export default function LinkCards() {
                     text-xl
                     font-black
                     leading-none
-                    text-zinc-900 dark:text-white
+                    text-zinc-900
+
+                    dark:text-white
                   "
                 >
                   {card.title}
@@ -128,11 +136,13 @@ export default function LinkCards() {
             <span
               className="
                 text-2xl
-                text-zinc-300 dark:text-zinc-500
+                text-zinc-300
                 transition
                 duration-300
                 group-hover:translate-x-1
                 group-hover:text-pink-400
+
+                dark:text-zinc-500
               "
             >
               ›
