@@ -1,7 +1,5 @@
 import Link from "next/link";
-
 import EditableList from "@/components/admin/EditableList";
-
 
 export default function AdminStreaksPage() {
   return (
@@ -22,7 +20,6 @@ export default function AdminStreaksPage() {
         >
           ← В админку
         </Link>
-
 
         <EditableList
           endpoint="/api/streaks"
