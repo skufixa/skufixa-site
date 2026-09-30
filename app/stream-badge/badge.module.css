@@ -1,0 +1,624 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent !important;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+
+/* =============================
+   ОБЩЕЕ ДВИЖЕНИЕ
+============================= */
+
+.float {
+  animation: floating 5s ease-in-out infinite;
+}
+
+.scene {
+  width: 210px;
+  height: 280px;
+
+  perspective: 1400px;
+}
+
+
+/* =============================
+   КАРТОЧКА
+============================= */
+
+.card {
+  position: relative;
+
+  width: 210px;
+  height: 280px;
+
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+
+  animation: flipCard 12s cubic-bezier(.65, 0, .35, 1) infinite;
+}
+
+
+/* =============================
+   ОБЕ СТОРОНЫ
+============================= */
+
+.face {
+  position: absolute;
+  inset: 0;
+
+  width: 210px;
+  height: 280px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow: hidden;
+
+  border-radius: 34px;
+
+  /*
+    Главное отличие:
+    почти полностью БЕЛЫЙ корпус
+  */
+  background:
+    radial-gradient(
+      circle at 30% 15%,
+      rgba(255, 255, 255, 1),
+      transparent 28%
+    ),
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #ffffff 48%,
+      #fffafd 75%,
+      #fff5fa 100%
+    );
+
+  border: 2px solid rgba(255, 255, 255, 0.98);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 206, 226, 0.45),
+
+    inset 0 0 20px rgba(255, 255, 255, 1),
+
+    0 8px 22px rgba(0, 0, 0, 0.10),
+
+    0 0 5px rgba(255, 158, 198, 0.7),
+    0 0 12px rgba(255, 170, 205, 0.35);
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+
+.front {
+  transform: rotateY(0deg);
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+
+/* =============================
+   ВНУТРЕННЯЯ РАМКА
+============================= */
+
+.innerBorder {
+  position: absolute;
+
+  inset: 6px;
+
+  border-radius: 28px;
+
+  border: 1px solid rgba(255, 177, 209, 0.45);
+
+  box-shadow:
+    inset 0 0 5px rgba(255,255,255,1),
+    0 0 4px rgba(255, 153, 194, .35);
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* =============================
+   ВЕРХНИЙ ДЕКОР
+============================= */
+
+.topDecor {
+  position: relative;
+
+  z-index: 3;
+
+  width: 110px;
+
+  margin-top: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.topHeart {
+  font-family: Arial, sans-serif;
+
+  font-size: 29px;
+  line-height: 1;
+
+  color: #f69bc0;
+
+  text-shadow:
+    0 0 3px #ffffff,
+    0 0 7px rgba(246, 155, 192, .65);
+}
+
+
+.sparkle {
+  font-family: Arial, sans-serif;
+
+  font-size: 11px;
+
+  color: #f2a3c3;
+
+  text-shadow:
+    0 0 5px rgba(255,255,255,1);
+
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.sparkle:last-child {
+  animation-delay: .7s;
+}
+
+
+/* =============================
+   АВАТАР
+============================= */
+
+.avatarGlow {
+  position: relative;
+
+  z-index: 4;
+
+  margin-top: 12px;
+
+  width: 143px;
+  height: 143px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 10%,
+      #ffd1e3 50%,
+      #ffffff 90%
+    );
+
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,1),
+
+    0 0 5px rgba(255, 142, 188, .8),
+    0 0 13px rgba(255, 165, 200, .4);
+}
+
+
+.avatarFrame {
+  width: 133px;
+  height: 133px;
+
+  box-sizing: border-box;
+
+  padding: 3px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 176, 208, .5);
+}
+
+
+.avatar {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+}
+
+
+/* =============================
+   НИК
+============================= */
+
+.nickname {
+  position: relative;
+
+  z-index: 4;
+
+  margin-top: 12px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 21px;
+  line-height: 1;
+
+  font-weight: 800;
+
+  letter-spacing: -.5px;
+
+  /*
+    Уже не розовый текст.
+    Почти чёрный.
+  */
+  color: #292329;
+
+  text-shadow:
+    0 1px 0 rgba(255,255,255,1);
+}
+
+
+.nickname span {
+  color: #ef8db6;
+
+  font-weight: 500;
+}
+
+
+/* =============================
+   STREAMER • CS2
+============================= */
+
+.subtitle {
+  position: relative;
+
+  z-index: 4;
+
+  margin-top: 9px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  letter-spacing: 3px;
+
+  color: #514a4e;
+}
+
+
+.subtitle b {
+  color: #ee8db6;
+
+  font-size: 10px;
+}
+
+
+/* =============================
+   QR
+============================= */
+
+.qrOuter {
+  position: relative;
+
+  z-index: 4;
+
+  margin-top: 15px;
+
+  padding: 5px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #ffd2e4,
+      #ffffff
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(255, 171, 205, .4),
+
+    0 0 8px rgba(255, 160, 199, .35);
+}
+
+
+.qrBox {
+  width: 142px;
+  height: 142px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+
+  border-radius: 15px;
+
+  background: #ffffff;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.025);
+}
+
+
+.qrBox svg {
+  display: block;
+
+  width: 126px;
+  height: 126px;
+}
+
+
+/* =============================
+   МОЙ САЙТ
+============================= */
+
+.siteLabel {
+  position: relative;
+
+  z-index: 4;
+
+  margin-top: 14px;
+
+  min-width: 132px;
+
+  box-sizing: border-box;
+
+  padding: 8px 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,1),
+      rgba(255,248,251,1)
+    );
+
+  border:
+    1px solid rgba(255, 169, 205, .48);
+
+  box-shadow:
+    inset 0 0 7px rgba(255,255,255,1),
+
+    0 0 6px rgba(255, 167, 202, .3);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: .6px;
+
+  color: #393136;
+}
+
+
+.siteLabel span {
+  color: #ef8db7;
+
+  font-size: 17px;
+}
+
+
+/* =============================
+   НИЖНИЙ ДЕКОР
+============================= */
+
+.bottomDecor {
+  position: absolute;
+
+  left: 50%;
+  bottom: 18px;
+
+  transform: translateX(-50%);
+
+  z-index: 4;
+
+  width: 145px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+}
+
+
+.line {
+  display: block;
+
+  width: 45px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(239, 141, 183, .65)
+    );
+}
+
+
+.line:last-child {
+  transform: scaleX(-1);
+}
+
+
+.bottomHeart {
+  font-family: Arial, sans-serif;
+
+  font-size: 22px;
+
+  color: #ef94ba;
+
+  line-height: 1;
+
+  text-shadow:
+    0 0 5px rgba(255,255,255,1),
+    0 0 6px rgba(246,156,194,.4);
+}
+
+
+/* =============================
+   БЛИК
+============================= */
+
+.shine {
+  position: absolute;
+
+  z-index: 10;
+
+  top: -120px;
+  left: -110px;
+
+  width: 45px;
+  height: 500px;
+
+  transform: rotate(35deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.15),
+      rgba(255,255,255,.85),
+      rgba(255,255,255,.15),
+      transparent
+    );
+
+  animation: shineMove 6s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+
+/* =============================
+   АНИМАЦИИ
+============================= */
+
+
+/*
+   аватарка долго стоит
+
+   -> переворот
+
+   QR долго стоит
+
+   -> обратно
+*/
+
+@keyframes flipCard {
+  0%,
+  39% {
+    transform: rotateY(0deg);
+  }
+
+  47%,
+  89% {
+    transform: rotateY(180deg);
+  }
+
+  97%,
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+
+/* еле заметное плавание */
+
+@keyframes floating {
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-.5deg);
+  }
+
+  50% {
+    transform:
+      translateY(-8px)
+      rotate(.5deg);
+  }
+}
+
+
+/* искорки */
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: .35;
+    transform: scale(.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+
+/* глянцевый блик */
+
+@keyframes shineMove {
+  0%,
+  58% {
+    left: -110px;
+  }
+
+  76% {
+    left: 280px;
+  }
+
+  100% {
+    left: 280px;
+  }
+}
