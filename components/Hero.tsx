@@ -60,7 +60,7 @@ export default function Hero() {
         ">
           <Image
             src="/avatar.jpg"
-            alt="skufixaa"
+            alt="skufixa"
             width={220}
             height={220}
             priority
@@ -104,7 +104,7 @@ export default function Hero() {
           tracking-tight
           sm:text-[58px]
         ">
-          skufixaa
+          skufixa
           <span className="text-pink-400"> ♡</span>
         </h1>
 
@@ -194,7 +194,7 @@ export default function Hero() {
 
 
       <a
-        href="https://www.twitch.tv/skufixaa"
+        href="https://www.twitch.tv/skufixa"
         target="_blank"
         rel="noreferrer"
         className="
